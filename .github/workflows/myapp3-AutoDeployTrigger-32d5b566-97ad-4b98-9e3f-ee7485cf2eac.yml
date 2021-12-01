@@ -26,7 +26,7 @@ jobs:
       - name: Log in to container registry
         uses: docker/login-action@v1
         with:
-          registry: stpellegtestregistry.azurecr.io
+          
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: stpellegtestregistry.azurecr.io/myapp3:${{ github.sha }}
+          tags: spellegrino021/myapp3:${{ github.sha }}
           file: ./Dockerfile
 
 
@@ -56,4 +56,4 @@ jobs:
             echo "Installing containerapp extension"
             az extension add --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl --yes
             echo "Starting Deploying"
-            az containerapp update -n myapp3 -g containerapps-rg -i stpellegtestregistry.azurecr.io/myapp3:${{ github.sha }} --registry-login-server stpellegtestregistry.azurecr.io --registry-username  ${{ secrets.REGISTRY_USERNAME }} --registry-password ${{ secrets.REGISTRY_PASSWORD }} --debug
+            az containerapp update -n myapp3 -g containerapps-rg -i spellegrino021/myapp3:${{ github.sha }}  --registry-username  ${{ secrets.REGISTRY_USERNAME }} --registry-password ${{ secrets.REGISTRY_PASSWORD }} --debug
