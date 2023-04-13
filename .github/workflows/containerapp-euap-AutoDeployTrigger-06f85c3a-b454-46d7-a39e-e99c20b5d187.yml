@@ -7,7 +7,7 @@ on:
     branches: 
       [ master ]
     paths:
-    - '**'
+    - 'app/docker/**'
     - '.github/workflows/containerapp-euap-AutoDeployTrigger-06f85c3a-b454-46d7-a39e-e99c20b5d187.yml'
 
   # Allow mannually trigger 
@@ -36,8 +36,8 @@ jobs:
         with:
           push: true
           tags: stpelleg002.azurecr.io/containerapp-euap:${{ github.sha }}
-          file: ./Dockerfile
-          context: ./
+          file: ./app/docker/Dockerfile
+          context: ./app/docker/
 
 
   deploy:
